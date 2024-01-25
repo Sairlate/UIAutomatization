@@ -1,4 +1,5 @@
 import com.codeborne.selenide.WebDriverRunner;
+import org.example.pages.elemetsPage.ButtonsPage;
 import org.example.pages.elemetsPage.RadioButtonPage;
 import org.example.pages.elemetsPage.TextBoxPage;
 import org.example.service.Config;
@@ -16,10 +17,10 @@ public class ElementsPageTests extends BaseTest {
     private final String permAddress = StringBuilder.genLatin(10);
 
     @Test
-    public void fillTextBoxPage(){
+    public void fillTextBoxPage() {
         //Открываем страницу TextBox
         TextBoxPage textBoxPage = new MainPage(config.baseURI()).openElementsPage().openTextBox();
-        Assert.assertEquals(WebDriverRunner.getWebDriver().getCurrentUrl(),"https://demoqa.com/text-box");
+        Assert.assertEquals(WebDriverRunner.getWebDriver().getCurrentUrl(), "https://demoqa.com/text-box");
 
         //В открывшейся странице вносим в поля соответсвующие данные
         textBoxPage.insertFullName(name);
@@ -33,12 +34,22 @@ public class ElementsPageTests extends BaseTest {
     }
 
     @Test
-        public void RadioButtonWork(){
+    public void RadioButtonWork() {
         RadioButtonPage radioButtonPage = new MainPage(config.baseURI()).openElementsPage().openRadioButton();
-        Assert.assertEquals(WebDriverRunner.getWebDriver().getCurrentUrl(),"https://demoqa.com/radio-button");
+        Assert.assertEquals(WebDriverRunner.getWebDriver().getCurrentUrl(), "https://demoqa.com/radio-button");
 
         radioButtonPage.clickYesButton();
         radioButtonPage.clickImpressiveButton();
         radioButtonPage.clickNoButton();
+    }
+
+    @Test
+    public void ButtonsWork(){
+        ButtonsPage buttonsPage = new MainPage(config.baseURI()).openElementsPage().openButtons();
+        Assert.assertEquals(WebDriverRunner.getWebDriver().getCurrentUrl(), "https://demoqa.com/buttons");
+
+        buttonsPage.clickDoubleClickButton();
+        buttonsPage.clickRightClickButton();
+        buttonsPage.clickClickButton();
     }
 }
