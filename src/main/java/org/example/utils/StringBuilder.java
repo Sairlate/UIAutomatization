@@ -1,8 +1,11 @@
 package org.example.utils;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
-public class StringBuilder {
+public class    StringBuilder {
     private static final String latLC = "abcdefghijklmnopqrstuvwxyz";
     private static final String latUC = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     private static final String cyrLC = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
@@ -43,5 +46,18 @@ public class StringBuilder {
 
         return result.toString();
 
+    }
+
+    public static String generateRandomEmail(Integer length) {
+        Random random = new Random();
+        java.lang.StringBuilder result = new java.lang.StringBuilder(length);
+        String characters = latLC + latUC + dig;
+        for (int i = 0; i < length; i++) {
+            int randomIndex = random.nextInt(characters.length());
+            result.append(characters.charAt(randomIndex));
+        }
+        result.append("@gmail.com");
+
+        return result.toString();
     }
 }
