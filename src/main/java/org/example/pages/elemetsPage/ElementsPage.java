@@ -16,10 +16,6 @@ public class ElementsPage {
     private final SelenideElement uploadPage = $("#item-7");
     private final SelenideElement propertiesPage = $("#item-8");
 
-
-    public ElementsPage(){
-    }
-
     public TextBoxPage openTextBox(){
         textBoxPage.click();
         return new TextBoxPage();

@@ -1,6 +1,5 @@
 package org.example.pages.elemetsPage;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.*;
@@ -25,7 +24,7 @@ public class ButtonsPage {
         rightClickMessage.shouldBe(visible);
     }
 
-    public void clickClickButton(){
+    public void clickDynamicButton(){
         clickButton.click();
         dynamicClickMessage.shouldBe(visible);
     }
