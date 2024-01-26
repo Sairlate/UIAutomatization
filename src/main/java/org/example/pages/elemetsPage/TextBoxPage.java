@@ -17,35 +17,32 @@ public class TextBoxPage {
     private final SelenideElement outputCurrentAddress = $("#output #currentAddress");
     private final SelenideElement outputPermanentAddress = $("#output #permanentAddress");
 
-    public SelenideElement insertFullName(String str) {
-        return fullName.setValue(str);
+    public void insertFullName(String str) {
+        fullName.setValue(str);
     }
 
-    public SelenideElement insertEmail(String str) {
-        return email.setValue(str);
+    public void insertEmail(String str) {
+        email.setValue(str);
     }
 
-    public SelenideElement insertCurrentAddress(String str) {
-        return currentAddress.setValue(str);
+    public void insertCurrentAddress(String str) {
+        currentAddress.setValue(str);
     }
 
-    public SelenideElement insertPermanentAddress(String str) {
-        return permanentAddress.setValue(str);
+    public void insertPermanentAddress(String str) {
+        permanentAddress.setValue(str);
     }
 
     public void clickOnSubmitButton() {
         submitButton.click();
     }
 
-    public boolean checkOutputIsPresent(String name, String email, String currAddress, String permAddress) {
+    public void checkOutputIsPresent(String name, String email, String currAddress, String permAddress) {
         if (output.isDisplayed()) {
             outputName.shouldHave(text(name));
             outputEmail.shouldHave(text(email));
             outputCurrentAddress.shouldHave(text(currAddress));
             outputPermanentAddress.shouldHave(text(permAddress));
-            return true;
-        } else {
-            return false;
         }
     }
 }

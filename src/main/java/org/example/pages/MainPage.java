@@ -21,7 +21,6 @@ public class MainPage {
 
     public MainPage(String url) {
         Selenide.open(url);
-        Selenide.sleep(1000);
     }
 
     public ElementsPage openElementsPage() {
