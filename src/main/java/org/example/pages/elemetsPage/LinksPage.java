@@ -1,6 +1,7 @@
 package org.example.pages.elemetsPage;
 
 import com.codeborne.selenide.SelenideElement;
+import org.example.elements.Link;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
@@ -9,15 +10,15 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class LinksPage {
-    private final SelenideElement homeLink = $("#simpleLink");
+    private final Link homeLink = new Link("Home");
     private final SelenideElement dynamicHomeLink = $("#dynamicLink");
-    private final SelenideElement created = $("#created");
-    private final SelenideElement noContent = $("#no-content");
-    private final SelenideElement moved = $("#moved");
-    private final SelenideElement badRequest = $("#bad-request");
-    private final SelenideElement unauthorized = $("#unauthorized");
-    private final SelenideElement forbidden = $("#forbidden");
-    private final SelenideElement notFound = $("#invalid-url");
+    private final Link created = new Link("Created");
+    private final Link noContent = new Link("No Content");
+    private final Link moved = new Link("Moved");
+    private final Link badRequest = new Link("Bad Request");
+    private final Link unauthorized = new Link("Unauthorized");
+    private final Link forbidden = new Link("Forbidden");
+    private final Link notFound = new Link("Not Found");
     private final SelenideElement linkResponse = $("#linkResponse");
 
     public void clickOnHomeLink(String window) throws InterruptedException {

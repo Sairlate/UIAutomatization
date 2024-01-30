@@ -1,35 +1,27 @@
 package org.example.pages.elemetsPage;
 
 import com.codeborne.selenide.SelenideElement;
+import org.example.elements.*;
 
 import java.util.Objects;
 
-import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 
-public class WebTablesPage {
-    private final SelenideElement addBtn = $("#addNewRecordButton");
-    private final SelenideElement firstName = $("#firstName");
-    private final SelenideElement lastName = $("#lastName");
-    private final SelenideElement email = $("#userEmail");
-    private final SelenideElement age = $("#age");
-    private final SelenideElement salary = $("#salary");
-    private final SelenideElement department = $("#department");
-    private final SelenideElement submitBtn = $("#submit");
-    private final SelenideElement search = $("#searchBox");
-    private final SelenideElement row = $("#app > div > div > div.row > div.col-12.mt-4.col-md-6 > " +
-            "div.web-tables-wrapper > div.ReactTable.-striped.-highlight > div.rt-table > div.rt-tbody > div");
-    private final SelenideElement editBtn = $("#edit-record-");
-    private final SelenideElement deleteBtn = $("#delete-record-");
-    private final SelenideElement previousBtn = $("#app > div > div > div.row > div.col-12.mt-4.col-md-6 > " +
-            "div.web-tables-wrapper > div.ReactTable.-striped.-highlight > div.pagination-bottom > div > div.-previous > button");
-    private final SelenideElement nextBtn = $("#app > div > div > div.row > " +
-            "div.col-12.mt-4.col-md-6 > div.web-tables-wrapper > div.ReactTable.-striped.-highlight > div.pagination-bottom" +
-            " > div > div.-next > button");
-    private final SelenideElement selectWrap = $("#app > div > div > div.row > div.col-12.mt-4.col-md-6 > " +
-            "div.web-tables-wrapper > div.ReactTable.-striped.-highlight > div.pagination-bottom > div > div.-center > " +
-            "span.select-wrap.-pageSizeOptions > select");
-    private final SelenideElement exitBtn = $("body > div.fade.modal.show > div > div > div.modal-header > button");
+public class WebTablesPage{
+    private final Button addBtn = new Button("Add");
+    private final Input firstName = new Input("First Name");
+    private final Input lastName = new Input("Last Name");
+    private final Input email = new Input("name@example.com");
+    private final Input age = new Input("Age");
+    private final Input salary = new Input("Salary");
+    private final Input department = new Input("Department");
+    private final Button submitBtn = new Button("Submit");
+    private final Input search = new Input("Type to search");
+    private final Table row = new Table($(".rt-tbody"), "Table");
+    private final Button previousBtn = new Button("Previous");
+    private final Button nextBtn = new Button("Next");
+    private final DropDown selectWrap = new DropDown($(".-pageSizeOptions"), "Rows");
+    private final SelenideElement exitBtn = $(".close");
 
     private final SelenideElement popup = $(".modal-dialog");
 
@@ -62,49 +54,19 @@ public class WebTablesPage {
     }
     public void insertSearchText(String str){
         search.setValue(str);
-        $("#app > div > div > div.row > div.col-12.mt-4.col-md-6 > div.web-tables-wrapper > div.ReactTable.-striped.-highlight > div.rt-table" +
-                " > div.rt-tbody > div:nth-child(1) > div").shouldHave(text(str));
+        row.findRow(1);
     }
     public void clickEditRow(String str){
-        $(editBtn.getSearchCriteria()+"1").click();
+        row.editRow("Cierra");
         firstName.setValue(str);
         submitBtn.click();
-        $("#app > div > div > div.row > div.col-12.mt-4.col-md-6 > div.web-tables-wrapper > div.ReactTable.-striped.-highlight > div.rt-table" +
-                " > div.rt-tbody > div:nth-child(1) > div").shouldHave(text(str));
+        row.findRow(1);;
     }
     public void clickDeleteRow(){
-        $(deleteBtn.getSearchCriteria()+"1").click();
+        row.deleteRow("Vega");
     }
     public void selectNumberOfRows(String str){
-        selectWrap.click();
-        switch (str){
-            case "5":
-                selectWrap.selectOptionByValue("5");
-                row.$(":nth-child(6)").shouldNotBe();
-                break;
-            case "10":
-                selectWrap.selectOptionByValue("10");
-                row.$(":nth-child(10)").shouldBe();
-                break;
-            case "20":
-                selectWrap.selectOptionByValue("20");
-                row.$(":nth-child(20)").shouldBe();
-                break;
-            case "25":
-                selectWrap.selectOptionByValue("25");
-                row.$(":nth-child(25)").shouldBe();
-                break;
-            case "50":
-                selectWrap.selectOptionByValue("50");
-                row.$(":nth-child(50)").shouldBe();
-                break;
-            case "100":
-                selectWrap.selectOptionByValue("100");
-                row.$(":nth-child(100)").shouldBe();
-                break;
-        }
-
-
+        selectWrap.selectOption(str);
     }
     public void clickNext(){
         nextBtn.click();

@@ -1,5 +1,6 @@
 package org.example.pages;
 
+import com.codeborne.selenide.ClickOptions;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import org.example.pages.alertsPage.AlertsPage;
@@ -8,6 +9,8 @@ import org.example.pages.elemetsPage.ElementsPage;
 import org.example.pages.formsPage.FormsPage;
 import org.example.pages.interactionsPage.InteractionsPage;
 import org.example.pages.widgetsPage.WidgetsPage;
+
+import java.time.Duration;
 
 import static com.codeborne.selenide.Selenide.$;
 
@@ -24,7 +27,7 @@ public class MainPage {
     }
 
     public ElementsPage openElementsPage() {
-        elementsPage.click();
+        elementsPage.click(ClickOptions.withTimeout(Duration.ofSeconds(10)));
         return new ElementsPage();
     }
 

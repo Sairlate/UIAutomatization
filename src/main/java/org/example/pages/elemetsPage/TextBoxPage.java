@@ -1,16 +1,18 @@
 package org.example.pages.elemetsPage;
 
 import com.codeborne.selenide.SelenideElement;
+import org.example.elements.Button;
+import org.example.elements.Input;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 
 public class TextBoxPage {
-    private final SelenideElement fullName = $("#userName");
-    private final SelenideElement email = $("#userEmail");
-    private final SelenideElement currentAddress = $("#currentAddress");
+    private final Input fullName = new Input("Full Name");
+    private final Input email = new Input("name@example.com");
+    private final Input currentAddress = new Input("Current Address");
     private final SelenideElement permanentAddress = $("#permanentAddress");
-    private final SelenideElement submitButton = $("#submit");
+    private final Button submitButton = new Button("Submit");
     private final SelenideElement output = $("#output");
     private final SelenideElement outputName = $("#output #name");
     private final SelenideElement outputEmail = $("#output #email");

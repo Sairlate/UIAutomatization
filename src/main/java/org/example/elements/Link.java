@@ -10,7 +10,7 @@ public class Link extends BaseElement{
         super(container.as("Ссылка: " + linkName));
     }
     public Link(String linkName){
-        this($x("//a[.='"+ linkName +"']"), linkName);
+        this($x("//a[text()='"+ linkName +"']"), linkName);
     }
 
     public void click(){

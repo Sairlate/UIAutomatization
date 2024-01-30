@@ -1,32 +1,34 @@
 package org.example.pages.elemetsPage;
 
 import com.codeborne.selenide.SelenideElement;
+import org.example.elements.Button;
+import org.example.elements.TextArea;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 
 public class ButtonsPage {
-    private final SelenideElement doubleClickButton = $("#doubleClickBtn");
-    private final SelenideElement rightClickButton = $("#rightClickBtn");
-    private final SelenideElement clickButton = $("#app > div > div > div.row > div.col-12.mt-4.col-md-6 > div:nth-child(2) > div:nth-child(3) > [type=\"button\"]");
-    private final SelenideElement doubleClickMessage = $("#doubleClickMessage");
-    private final SelenideElement rightClickMessage = $("#rightClickMessage");
-    private final SelenideElement dynamicClickMessage = $("#dynamicClickMessage");
+    private final Button doubleClickButton = new Button("Double Click Me");
+    private final Button rightClickButton = new Button("Right Click Me");
+    private final Button clickButton = new Button("Click Me");
+    private final TextArea doubleClickMessage = new TextArea("You have done a double click");
+    private final TextArea rightClickMessage = new TextArea("You have done a right click");
+    private final TextArea dynamicClickMessage = new TextArea("You have done a dynamic click");
 
 
     public void clickDoubleClickButton(){
         doubleClickButton.doubleClick();
-        doubleClickMessage.shouldBe(visible);
+        doubleClickMessage.isVisible(true);
     }
 
     public void clickRightClickButton(){
         rightClickButton.contextClick();
-        rightClickMessage.shouldBe(visible);
+        rightClickMessage.isVisible(true);
     }
 
     public void clickDynamicButton(){
         clickButton.click();
-        dynamicClickMessage.shouldBe(visible);
+        dynamicClickMessage.isVisible(true);
     }
 
 }

@@ -18,6 +18,7 @@ public abstract class BaseElement {
             container.shouldNotBe(visible);
         }
     }
+
     public void isEnabled(Boolean isEnabled) {
         if (isEnabled) {
             container.shouldBe(enabled);
@@ -25,6 +26,7 @@ public abstract class BaseElement {
             container.shouldBe(disabled);
         }
     }
+
     public void isExist(Boolean isExist) {
         if (isExist) {
             container.shouldBe(exist);
@@ -32,9 +34,19 @@ public abstract class BaseElement {
             container.shouldNotBe(exist);
         }
     }
+
+    public void isDisplayed(Boolean isDisplayed) {
+        if (isDisplayed) {
+            container.isDisplayed();
+        } else {
+            container.shouldNotBe().isDisplayed();
+        }
+    }
+
     public String getText() {
         return container.text();
     }
+
     public String getValue() {
         return container.getValue();
     }
