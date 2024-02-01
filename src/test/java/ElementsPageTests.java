@@ -90,4 +90,14 @@ public class ElementsPageTests extends BaseTest {
         WEB_TABLES_PAGE_STEPS.changePageNumber("2");
         WEB_TABLES_PAGE_STEPS.search(firstName);
     }
+
+    @Test
+    public void brokenLinksWork(){
+        mainPage.elementsCard.cardClick();
+        menu.openFrame("Broken Links - Images");
+        String originalWindow = getWebDriver().getWindowHandle();
+
+        BROKEN_LINKS_STEPS.checkAllPresentedImg();
+        BROKEN_LINKS_STEPS.checkAllPresentedLinks(originalWindow);
+    }
 }

@@ -3,6 +3,8 @@ package org.example.elements;
 import com.codeborne.selenide.ClickOptions;
 import com.codeborne.selenide.SelenideElement;
 
+import java.time.Duration;
+
 import static com.codeborne.selenide.Selenide.$x;
 
 public class Card extends BaseElement {
@@ -15,6 +17,6 @@ public class Card extends BaseElement {
     }
 
     public void cardClick() {
-        container.click();
+        container.click(ClickOptions.withTimeout(Duration.ofSeconds(10)));
     }
 }

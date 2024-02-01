@@ -1,5 +1,6 @@
 package org.example.pages.elemetsPage.frames;
 
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import org.example.elements.Link;
 import org.testng.Assert;
@@ -20,9 +21,9 @@ public class LinksFrame {
     private final Link notFound = new Link("Not Found");
     private final SelenideElement linkResponse = $("#linkResponse");
 
-    public void clickOnHomeLink(String window) throws InterruptedException {
+    public void clickOnHomeLink(String window){
         homeLink.click();
-        Thread.sleep(1000);
+        Selenide.sleep(1000);
         for(String windowHandle : getWebDriver().getWindowHandles()){
             if(!windowHandle.equals(window)) {
                 getWebDriver().switchTo().window(windowHandle);
@@ -32,9 +33,9 @@ public class LinksFrame {
         getWebDriver().switchTo().window(window);
     }
 
-    public void clickOnDynamicHomeLink(String window) throws InterruptedException {
+    public void clickOnDynamicHomeLink(String window){
         dynamicHomeLink.click();
-        Thread.sleep(1000);
+        Selenide.sleep(1000);
         for(String windowHandle : getWebDriver().getWindowHandles()){
             if(!windowHandle.equals(window)) {
                 getWebDriver().switchTo().window(windowHandle);

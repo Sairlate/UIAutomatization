@@ -6,4 +6,5 @@ public interface Steps {
     LinksPageSteps LINKS_PAGE_STEPS = new LinksPageSteps();
     RadioButtonPageSteps RADIO_BUTTON_PAGE_STEPS = new RadioButtonPageSteps();
     WebTablesPageSteps WEB_TABLES_PAGE_STEPS = new WebTablesPageSteps();
+    BrokenLinksSteps BROKEN_LINKS_STEPS = new BrokenLinksSteps();
 }
