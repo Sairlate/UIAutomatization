@@ -1,13 +1,11 @@
-package org.example.pages.elemetsPage;
+package org.example.pages.elemetsPage.frames;
 
-import com.codeborne.selenide.SelenideElement;
 import org.example.elements.Button;
 import org.example.elements.TextArea;
 
-import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 
-public class ButtonsPage {
+public class ButtonsFrame {
     private final Button doubleClickButton = new Button("Double Click Me");
     private final Button rightClickButton = new Button("Right Click Me");
     private final Button clickButton = new Button("Click Me");

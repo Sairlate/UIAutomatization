@@ -2,28 +2,37 @@ package org.example.service;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.WebDriverRunner;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.example.pages.BasePage;
 import org.example.steps.Steps;
 import org.openqa.selenium.PageLoadStrategy;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.*;
+
+import static com.codeborne.selenide.Selenide.open;
 
 
-abstract public class BaseTest implements Steps{
+abstract public class BaseTest extends BasePage implements Steps{
+
+    static Config config = org.aeonbits.owner.ConfigFactory.create(Config.class);
+    @BeforeClass
     public void setUp(){
         WebDriverManager.chromedriver().setup();
-        Configuration.browser = "chrome";
-        Configuration.headless = false;
-        Configuration.browserSize = "1920x1080";
+        Configuration.baseUrl = config.baseURI();
         Configuration.pageLoadStrategy = String.valueOf(PageLoadStrategy.NONE);
+        Configuration.timeout = 8000;
+        Configuration.webdriverLogsEnabled = true;
+        Configuration.fastSetValue = false;
+        Configuration.headless = false;
     }
 
-    @BeforeTest
+    @BeforeMethod
     public void init(){
-        setUp();
+        open("https://demoqa.com/");
+        WebDriverRunner.getWebDriver().manage().window().maximize();
     }
 
-    @AfterTest
+    @AfterClass
     public void tearDown(){
         Selenide.closeWebDriver();
     }

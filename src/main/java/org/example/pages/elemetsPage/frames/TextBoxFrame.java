@@ -1,4 +1,4 @@
-package org.example.pages.elemetsPage;
+package org.example.pages.elemetsPage.frames;
 
 import com.codeborne.selenide.SelenideElement;
 import org.example.elements.Button;
@@ -7,7 +7,7 @@ import org.example.elements.Input;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 
-public class TextBoxPage {
+public class TextBoxFrame {
     private final Input fullName = new Input("Full Name");
     private final Input email = new Input("name@example.com");
     private final Input currentAddress = new Input("Current Address");

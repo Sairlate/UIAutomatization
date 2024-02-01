@@ -1,15 +1,14 @@
-package org.example.pages.elemetsPage;
+package org.example.pages.elemetsPage.frames;
 
 import com.codeborne.selenide.SelenideElement;
 import org.example.elements.Link;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
-public class LinksPage {
+public class LinksFrame {
     private final Link homeLink = new Link("Home");
     private final SelenideElement dynamicHomeLink = $("#dynamicLink");
     private final Link created = new Link("Created");

@@ -27,14 +27,6 @@ public abstract class BaseElement {
         }
     }
 
-    public void isExist(Boolean isExist) {
-        if (isExist) {
-            container.shouldBe(exist);
-        } else {
-            container.shouldNotBe(exist);
-        }
-    }
-
     public void isDisplayed(Boolean isDisplayed) {
         if (isDisplayed) {
             container.isDisplayed();

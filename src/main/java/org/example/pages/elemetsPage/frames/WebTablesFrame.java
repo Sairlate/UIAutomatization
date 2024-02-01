@@ -1,4 +1,4 @@
-package org.example.pages.elemetsPage;
+package org.example.pages.elemetsPage.frames;
 
 import com.codeborne.selenide.SelenideElement;
 import org.example.elements.*;
@@ -7,7 +7,7 @@ import java.util.Objects;
 
 import static com.codeborne.selenide.Selenide.$;
 
-public class WebTablesPage{
+public class WebTablesFrame {
     private final Button addBtn = new Button("Add");
     private final Input firstName = new Input("First Name");
     private final Input lastName = new Input("Last Name");

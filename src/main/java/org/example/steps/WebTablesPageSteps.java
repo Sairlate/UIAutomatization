@@ -1,57 +1,54 @@
 package org.example.steps;
 
-import org.example.pages.elemetsPage.WebTablesPage;
+import org.example.elements.BaseElement;
+import org.example.pages.BasePage;
+import org.example.pages.elemetsPage.frames.WebTablesFrame;
 import org.example.utils.StringBuilder;
 
-public class WebTablesPageSteps {
-    private final String firstName = StringBuilder.genLatin(5);
-    private final String lastName = StringBuilder.genLatin(5);
-    private final String email = StringBuilder.generateRandomEmail(10);
-    private final int age = StringBuilder.genNumeric(2);
-    private final int salary = StringBuilder.genNumeric(5);
-    private final String department = StringBuilder.genLatin(5);
+public class WebTablesPageSteps extends BasePage {
 
-    public void addNewRow(WebTablesPage webTablesPage, int quantity){
+    public void addNewRow(int quantity, String firstName, String lastName, String email, int age, int salary, String department) {
         for (int i = 0; i < quantity; i++) {
-            webTablesPage.clickAdd();
-            webTablesPage.insertFirstName(firstName);
-            webTablesPage.insertLastName(lastName);
-            webTablesPage.insertEmail(email);
-            webTablesPage.insertAge(age);
-            webTablesPage.insertSalary(salary);
-            webTablesPage.insertDepartment(department);
-            webTablesPage.clickSubmit();
+            elementsPage.webTablesFrame.clickAdd();
+            elementsPage.webTablesFrame.insertFirstName(firstName);
+            elementsPage.webTablesFrame.insertLastName(lastName);
+            elementsPage.webTablesFrame.insertEmail(email);
+            elementsPage.webTablesFrame.insertAge(age);
+            elementsPage.webTablesFrame.insertSalary(salary);
+            elementsPage.webTablesFrame.insertDepartment(department);
+            elementsPage.webTablesFrame.clickSubmit();
         }
     }
-    public void search(WebTablesPage webTablesPage){
-        webTablesPage.insertSearchText(firstName);
+
+    public void search(String firstName) {
+        elementsPage.webTablesFrame.insertSearchText(firstName);
     }
 
-    public void editRow(WebTablesPage webTablesPage){
-        webTablesPage.clickEditRow("qwerty");
+    public void editRow() {
+        elementsPage.webTablesFrame.clickEditRow("qwerty");
     }
 
-    public void deleteRow(WebTablesPage webTablesPage){
-        webTablesPage.clickDeleteRow();
+    public void deleteRow() {
+        elementsPage.webTablesFrame.clickDeleteRow();
     }
 
-    public void selectNumberOfRows(WebTablesPage webTablesPage, String str){
-        webTablesPage.selectNumberOfRows(str);
+    public void selectNumberOfRows(String str) {
+        elementsPage.webTablesFrame.selectNumberOfRows(str);
     }
 
-    public void clickNextBtn(WebTablesPage webTablesPage){
-        webTablesPage.clickNext();
+    public void clickNextBtn() {
+        elementsPage.webTablesFrame.clickNext();
     }
 
-    public void clickPreviousBtn(WebTablesPage webTablesPage){
-        webTablesPage.clickPrevious();
+    public void clickPreviousBtn() {
+        elementsPage.webTablesFrame.clickPrevious();
     }
 
-    public void clickExitBtn(WebTablesPage webTablesPage){
-        webTablesPage.clickExitBtn();
+    public void clickExitBtn() {
+        elementsPage.webTablesFrame.clickExitBtn();
     }
 
-    public void changePageNumber(WebTablesPage webTablesPage, String str){
-        webTablesPage.changePageNumber(str);
+    public void changePageNumber(String str) {
+        elementsPage.webTablesFrame.changePageNumber(str);
     }
 }
